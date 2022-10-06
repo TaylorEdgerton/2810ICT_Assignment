@@ -1,12 +1,15 @@
 import wx
 
+
+
 Page="Home"
 class MainWindow(wx.Frame):
     page = ""
     """ We simply derive a new class of Frame. """
     def __init__(self, parent, title):
 
-
+        font = wx.SystemSettings.GetFont(wx.SYS_SYSTEM_FONT)
+        font.SetPointSize(12)
         Title = "Victorian Crash Stats App"
 # --------------------------------HOME PAGE --------------------------------------------
         wx.Frame.__init__(self, parent, title=title, size=(1080,800))
@@ -17,7 +20,9 @@ class MainWindow(wx.Frame):
         sizerDescription = wx.BoxSizer(wx.HORIZONTAL)
         descriptionText= "This app will show you data representations of road accident statistics in Victoria"
         textTitle = wx.StaticText(self.panelHome, label=Title)
+        textTitle.SetFont(font)
         textDescription = wx.StaticText(self.panelHome, label= descriptionText)
+        textDescription.SetFont(font)
 
         sizerTitle.Add(textTitle, flag=wx.ALIGN_CENTRE)
         sizerTitle.Add(0,10,0)
@@ -25,6 +30,7 @@ class MainWindow(wx.Frame):
         Button1 = wx.Button(self.panelHome, label="Enter")
         Button1.Bind(wx.EVT_BUTTON, self.HomeToMenu)
 
+        mainSizerHome.Add(flag = wx.EXPAND)
         mainSizerHome.Add(sizerTitle, flag=wx.ALIGN_CENTRE)
         mainSizerHome.Add(sizerDescription, flag=wx.ALIGN_CENTRE)
         mainSizerHome.Add(Button1, proportion = 0, flag=wx.ALIGN_CENTRE)

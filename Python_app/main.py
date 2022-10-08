@@ -231,15 +231,17 @@ class MainWindow(wx.Frame):
     def SubmitOption1Date(self,event):
         x = self.datePickTo.GetValue()
         y = self.datePickFrom.GetValue()
-        print(x)
-        print(y)
+        # print(x)
+        # print(y)
+        DateFromFormat = y.Format("%d/%m/%y")
+        DateToFormat = x.Format("%d/%m/%y")
+        # z = y.getAccidentsByAlcohol(y, x)
 
-        self.GetData.getAccidentsByDate(x,y)
+
+        self.GetData.getAccidentsByDate(DateFromFormat,DateToFormat)
 
     def getAccidentsByDate(self, dateFrom, dateTo):
         y = GetData()
-        x = y.getAccidentsByAlcohol(dateFrom, dateTo)
-        print(x)        
 
 
     def HomeToMenu(self, event):

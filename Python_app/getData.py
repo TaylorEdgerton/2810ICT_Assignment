@@ -10,10 +10,10 @@ class GetData():
         df = pandas.read_csv("Crash Statistics Victoria.csv")
         df.to_sql(table_name, connection, if_exists='append', index=False)
 
-    def getAccidentsByAlcohol(self):
-        self.cursor.execute("SELECT * FROM VicCrashStats WHERE ALCOHOL_RELATED == 'Yes'")
+    def getAccidentsByDate(self, DateFrom, DateTo):
+        self.cursor.execute("SELECT * FROM VicCrashStats WHERE DATE BETWEEN" + str(DateFrom) + "AND" + str(DateTo))
         result = self.cursor.fetchall()
 
         for r in result:
-            return(r)
+            print(r)
         # getAccidentsByAlcohol()

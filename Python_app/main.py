@@ -7,7 +7,7 @@ class MainWindow(wx.Frame):
     page = ""
     """ We simply derive a new class of Frame. """
     def __init__(self, parent, title):
-
+        self.GetData = GetData()
         font = wx.SystemSettings.GetFont(wx.SYS_SYSTEM_FONT)
         font.SetPointSize(12)
         Title = "Victorian Crash Stats App"
@@ -102,17 +102,30 @@ class MainWindow(wx.Frame):
 
         datePickFromText = wx.StaticText(self.panelOption1, label="Date From")
         datePickToText = wx.StaticText(self.panelOption1, label="Date To")
+
+        # datePickFromText.Bind(wx.adv.EVT_DATE_CHANGED, )
+
+
+
         datePickFromText.SetFont(font)
         datePickToText.SetFont(font)
-        datePickFrom = wx.adv.DatePickerCtrl(self.panelOption1)
-        datePickFrom.SetFont(font)
+        self.datePickFrom = wx.adv.DatePickerCtrl(self.panelOption1)
+
+
+        
+        self.datePickFrom.SetFont(font)
         # datePickFrom.Bind(wx.adv.EVT_DATE_CHANGED)
-        datePickTo = wx.adv.DatePickerCtrl(self.panelOption1)
-        datePickTo.SetFont(font)
+        self.datePickTo = wx.adv.DatePickerCtrl(self.panelOption1)
+        self.datePickTo.SetFont(font)
+
+        submitOption1 = wx.Button(self.panelOption1, label="Submit")
+        submitOption1.Bind(wx.EVT_BUTTON, self.SubmitOption1Date)
+
         datePickSizerOption1.Add(datePickFromText, flag= wx.ALL, border=20)
-        datePickSizerOption1.Add(datePickFrom, flag= wx.ALL, border=20)
+        datePickSizerOption1.Add(self.datePickFrom, flag= wx.ALL, border=20)
         datePickSizerOption1.Add(datePickToText, flag= wx.ALL, border=20)
-        datePickSizerOption1.Add(datePickTo, flag= wx.ALL, border=20)
+        datePickSizerOption1.Add(self.datePickTo, flag= wx.ALL, border=20)
+        datePickSizerOption1.Add(submitOption1, flag=wx.ALL, border = 20)
 
         mainSizerOption1.Add(sizerTitle2, flag = wx.ALIGN_CENTRE)
 
@@ -215,6 +228,19 @@ class MainWindow(wx.Frame):
 
 
 # ------------------------------- Button Event Functions------------------------------------------------
+    def SubmitOption1Date(self,event):
+        x = self.datePickTo.GetValue()
+        y = self.datePickFrom.GetValue()
+        print(x)
+        print(y)
+
+        self.GetData.getAccidentsByDate(x,y)
+
+    def getAccidentsByDate(self, dateFrom, dateTo):
+        y = GetData()
+        x = y.getAccidentsByAlcohol(dateFrom, dateTo)
+        print(x)        
+
 
     def HomeToMenu(self, event):
         # self.frame.Show()

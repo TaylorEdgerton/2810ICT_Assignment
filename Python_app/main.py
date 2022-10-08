@@ -1,6 +1,6 @@
 import wx
-
-
+import wx.adv
+from getData import *
 
 Page="Home"
 class MainWindow(wx.Frame):
@@ -24,13 +24,12 @@ class MainWindow(wx.Frame):
         textDescription = wx.StaticText(self.panelHome, label= descriptionText)
         textDescription.SetFont(font)
 
-        sizerTitle.Add(textTitle, flag=wx.ALIGN_CENTRE)
-        sizerTitle.Add(0,10,0)
-        sizerDescription.Add(textDescription, flag=wx.CENTER)
+        sizerTitle.Add(textTitle, flag=wx.ALL, border=80)
+        sizerDescription.Add(textDescription, flag=wx.ALL, border=150)
         Button1 = wx.Button(self.panelHome, label="Enter")
         Button1.Bind(wx.EVT_BUTTON, self.HomeToMenu)
 
-        mainSizerHome.Add(flag = wx.EXPAND)
+       
         mainSizerHome.Add(sizerTitle, flag=wx.ALIGN_CENTRE)
         mainSizerHome.Add(sizerDescription, flag=wx.ALIGN_CENTRE)
         mainSizerHome.Add(Button1, proportion = 0, flag=wx.ALIGN_CENTRE)
@@ -46,6 +45,7 @@ class MainWindow(wx.Frame):
         self.panelMenu = wx.Panel(self)
 
         mainSizerMenu = wx.BoxSizer(wx.VERTICAL)
+        sizerTitle2 = wx.BoxSizer(wx.HORIZONTAL)
 
         BackButton = wx.Button(self.panelMenu, label="Back")
         BackButton.Bind(wx.EVT_BUTTON, self.BackFromMenu)
@@ -57,14 +57,19 @@ class MainWindow(wx.Frame):
         Option3.Bind(wx.EVT_BUTTON, self.Option3)
         Option4 = wx.Button(self.panelMenu, label="Menu Option 4")
         Option4.Bind(wx.EVT_BUTTON, self.Option4)
-        sizerTitle2 = wx.BoxSizer(wx.HORIZONTAL)
+        Option1.SetFont(font)
+        Option2.SetFont(font)
+        Option3.SetFont(font)
+        Option4.SetFont(font)
+
         textTitle2 = wx.StaticText(self.panelMenu, label=Title)
-        sizerTitle2.Add(textTitle2, flag=wx.ALIGN_CENTRE)
-        mainSizerMenu.Add(sizerTitle2, flag=wx.ALIGN_CENTRE)
-        mainSizerMenu.Add(Option1, flag=wx.ALIGN_CENTRE)
-        mainSizerMenu.Add(Option2, flag=wx.ALIGN_CENTRE)
-        mainSizerMenu.Add(Option3, flag=wx.ALIGN_CENTRE)
-        mainSizerMenu.Add(Option4, flag=wx.ALIGN_CENTRE)
+        sizerTitle2.Add(textTitle2, flag=wx.ALL, border=150)
+        textTitle2.SetFont(font)
+        mainSizerMenu.Add(sizerTitle2, flag=wx.ALIGN_CENTRE | wx.ALL, border=20)
+        mainSizerMenu.Add(Option1, flag=wx.ALIGN_CENTRE | wx.ALL, border=20)
+        mainSizerMenu.Add(Option2, flag=wx.ALIGN_CENTRE | wx.ALL, border=20)
+        mainSizerMenu.Add(Option3, flag=wx.ALIGN_CENTRE | wx.ALL, border=20)
+        mainSizerMenu.Add(Option4, flag=wx.ALIGN_CENTRE | wx.ALL, border=20)
 
         self.panelMenu.SetSizer(mainSizerMenu)
         self.panelMenu.Hide()
@@ -76,22 +81,44 @@ class MainWindow(wx.Frame):
 
         self.panelOption1 = wx.Panel(self)
 
+
+
         mainSizerOption1 = wx.BoxSizer(wx.VERTICAL)
+        datePickSizerOption1 = wx.BoxSizer(wx.HORIZONTAL)
         sizerTitle3 = wx.BoxSizer(wx.HORIZONTAL)
         sizerDescriptionOption1 = wx.BoxSizer(wx.HORIZONTAL)
         descriptionTextOption1= "Select a date period to view details on all accidents that occured during that period"
         textTitle2 = wx.StaticText(self.panelOption1, label=Title)
+        textTitle2.SetFont(font)
         textDescriptionOption1 = wx.StaticText(self.panelOption1, label= descriptionTextOption1)
-
+        textDescriptionOption1.SetFont(font)   
         sizerTitle2 = wx.BoxSizer(wx.HORIZONTAL)
-        sizerTitle2.Add(textTitle2, flag=wx.ALIGN_CENTRE)  
+        sizerTitle2.Add(textTitle2, flag = wx.ALL, border = 40)
         sizerDescriptionOption1.Add(textDescriptionOption1, flag=wx.ALIGN_CENTRE)
         BackButton = wx.Button(self.panelOption1, label="Back")
+        BackButton.SetFont(font)
         BackButton.Bind(wx.EVT_BUTTON, self.BackFromOption)
 
-        mainSizerOption1.Add(sizerTitle2, flag=wx.ALIGN_CENTRE)
-        mainSizerOption1.Add(sizerDescriptionOption1,flag=wx.ALIGN_CENTRE)
 
+        datePickFromText = wx.StaticText(self.panelOption1, label="Date From")
+        datePickToText = wx.StaticText(self.panelOption1, label="Date To")
+        datePickFromText.SetFont(font)
+        datePickToText.SetFont(font)
+        datePickFrom = wx.adv.DatePickerCtrl(self.panelOption1)
+        datePickFrom.SetFont(font)
+        # datePickFrom.Bind(wx.adv.EVT_DATE_CHANGED)
+        datePickTo = wx.adv.DatePickerCtrl(self.panelOption1)
+        datePickTo.SetFont(font)
+        datePickSizerOption1.Add(datePickFromText, flag= wx.ALL, border=20)
+        datePickSizerOption1.Add(datePickFrom, flag= wx.ALL, border=20)
+        datePickSizerOption1.Add(datePickToText, flag= wx.ALL, border=20)
+        datePickSizerOption1.Add(datePickTo, flag= wx.ALL, border=20)
+
+        mainSizerOption1.Add(sizerTitle2, flag = wx.ALIGN_CENTRE)
+
+        mainSizerOption1.Add(sizerDescriptionOption1,flag=wx.ALIGN_CENTRE)
+        # mainSizerOption1.Add(datePickFrom, proportion = 0, flag=wx.ALIGN_CENTRE)
+        mainSizerOption1.Add(datePickSizerOption1, proportion = 0, flag=wx.ALIGN_CENTRE)
         self.panelOption1.SetSizer(mainSizerOption1)
         self.panelOption1.Hide()
 
@@ -100,24 +127,48 @@ class MainWindow(wx.Frame):
         # --------------------------------OPTION2 PAGE --------------------------------------------
 
 
-
         self.panelOption2 = wx.Panel(self)
 
+
+
         mainSizerOption2 = wx.BoxSizer(wx.VERTICAL)
-        sizerTitle2 = wx.BoxSizer(wx.HORIZONTAL)
-        sizerDescription2 = wx.BoxSizer(wx.HORIZONTAL)
-        # descriptionText2= "Page2"
+        datePickSizerOption2 = wx.BoxSizer(wx.HORIZONTAL)
+        sizerTitle3 = wx.BoxSizer(wx.HORIZONTAL)
+        sizerDescriptionOption2 = wx.BoxSizer(wx.HORIZONTAL)
+        descriptionTextOption2= "Select a date period to view details on all accidents that occured during that period"
         textTitle2 = wx.StaticText(self.panelOption2, label=Title)
-
-        sizerTitle2.Add(textTitle2, flag=wx.ALIGN_CENTRE)
-
+        textTitle2.SetFont(font)
+        textDescriptionOption2 = wx.StaticText(self.panelOption2, label= descriptionTextOption2)
+        textDescriptionOption2.SetFont(font)
+        sizerTitle2 = wx.BoxSizer(wx.HORIZONTAL)
+        sizerTitle2.Add(textTitle2, flag = wx.ALL, border = 40)
+        sizerDescriptionOption2.Add(textDescriptionOption2, flag=wx.ALIGN_CENTRE)
         BackButton = wx.Button(self.panelOption2, label="Back")
+        BackButton.SetFont(font)
         BackButton.Bind(wx.EVT_BUTTON, self.BackFromOption)
-        mainSizerOption2.Add(sizerTitle2, flag=wx.ALIGN_CENTRE)
+
+
+        datePickFromText = wx.StaticText(self.panelOption2, label="Date From")
+        datePickToText = wx.StaticText(self.panelOption2, label="Date To")
+        datePickFromText.SetFont(font)
+        datePickToText.SetFont(font)
+        datePickFrom = wx.adv.DatePickerCtrl(self.panelOption2)
+        datePickFrom.SetFont(font)
+        # datePickFrom.Bind(wx.adv.EVT_DATE_CHANGED)
+        datePickTo = wx.adv.DatePickerCtrl(self.panelOption2)
+        datePickTo.SetFont(font)
+        datePickSizerOption2.Add(datePickFromText, flag= wx.ALL, border=20)
+        datePickSizerOption2.Add(datePickFrom, flag= wx.ALL, border=20)
+        datePickSizerOption2.Add(datePickToText, flag= wx.ALL, border=20)
+        datePickSizerOption2.Add(datePickTo, flag= wx.ALL, border=20)
+
+        mainSizerOption2.Add(sizerTitle2, flag = wx.ALIGN_CENTRE)
+
+        mainSizerOption2.Add(sizerDescriptionOption2,flag=wx.ALIGN_CENTRE)
+        # mainSizerOption1.Add(datePickFrom, proportion = 0, flag=wx.ALIGN_CENTRE)
+        mainSizerOption2.Add(datePickSizerOption2, proportion = 0, flag=wx.ALIGN_CENTRE)
         self.panelOption2.SetSizer(mainSizerOption2)
         self.panelOption2.Hide()
-
-
 
         # --------------------------------OPTION3 PAGE --------------------------------------------
 
@@ -190,6 +241,9 @@ class MainWindow(wx.Frame):
 
     def Option1(self, event):
         # self.frame.Show()
+        # y = GetData()
+        # x = y.getAccidentsByAlcohol()
+        # print(x)
         self.panelOption1.Show()
         self.panelMenu.Hide()
         self.panelOption1.SetSize(1080,800)

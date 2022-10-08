@@ -17,7 +17,7 @@ class GetData():
         # date = datetime.strptime(DateFrom,"%d")
         # print(DateFrom)
 
-        self.cursor.execute("SELECT * FROM VicCrashStats WHERE DATE BETWEEN" +" " + str(DateFrom) + " " + "AND" + " " + str(DateTo))
+        self.cursor.execute("SELECT * FROM VicCrashStats WHERE ACCIDENT_DATE BETWEEN" +" " + str(DateFrom) + " " + "AND" + " " + str(DateTo))
         result = self.cursor.fetchall()
 
         for r in result:

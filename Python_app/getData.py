@@ -62,12 +62,7 @@ class GetData():
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         print("Getting Data")
-        print(len(result))
-        if len(result) > 0:
-            for r in result:
-                print(r)
-            else:
-                print("no data")
+        return result
         # getAccidentsByAlcohol()
 # GetData=GetData()
 # GetData.test()

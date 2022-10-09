@@ -81,6 +81,13 @@ class MainWindow(wx.Frame):
 
         self.panelOption1 = wx.Panel(self)
 
+        self.option1AllAccidents = ()
+
+        self.option1ListControl = wx.ListCtrl(self.panelOption1, size = (400,400), style = wx.LC_REPORT | wx.BORDER_SUNKEN)
+        self.option1ListControl.InsertColumn(1, "OBJECTID")
+        self.option1ListControl.InsertColumn(2, "ACCIDENT DATE")
+        self.option1ListControl.InsertColumn(3, "ACCIDENT TYPE")
+
 
 
         mainSizerOption1 = wx.BoxSizer(wx.VERTICAL)
@@ -132,6 +139,7 @@ class MainWindow(wx.Frame):
         mainSizerOption1.Add(sizerDescriptionOption1,flag=wx.ALIGN_CENTRE)
         # mainSizerOption1.Add(datePickFrom, proportion = 0, flag=wx.ALIGN_CENTRE)
         mainSizerOption1.Add(datePickSizerOption1, proportion = 0, flag=wx.ALIGN_CENTRE)
+        mainSizerOption1.Add(self.option1ListControl, proportion = 0, flag=wx.ALIGN_CENTRE)
         self.panelOption1.SetSizer(mainSizerOption1)
         self.panelOption1.Hide()
 
@@ -245,7 +253,26 @@ class MainWindow(wx.Frame):
         # z = y.getAccidentsByAlcohol(y, x)
 
 
-        self.GetData.getAccidentsByDate(str(DateFromFormat),str(DateToFormat))
+        option1AllAccidents = self.GetData.getAccidentsByDate(str(DateFromFormat),str(DateToFormat))
+        # for i in option1AllAccidents:
+        #     index = 0
+        #     print(i[0])
+        #     self.option1ListControl.InsertItem(0,str(i[0]))
+        #     index +=1
+        # for i in option1AllAccidents:
+        #     index=0
+        #     print(i[1])
+        #     self.option1ListControl.InsertItem(1,str(i[1]))
+        #     index+=1
+        # for i in option1AllAccidents:
+        #     index=0
+        #     print(i[2])
+        #     self.option1ListControl.InsertItem(2,str(i[2]))
+        #     index+=1
+        for item in option1AllAccidents:
+            index = self.option1ListControl.InsertItem(self.option1ListControl.GetItemCount(), item[0])
+            for col, text in enumerate(item[1:]):
+                self.option1ListControl.SetItem(index, col + 1, text)
 
     def submitOption3Keyword(self, event):
         keyword = self.option3KeywordInput.GetLineText

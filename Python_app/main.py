@@ -199,7 +199,13 @@ class MainWindow(wx.Frame):
         BackButton = wx.Button(self.panelOption3, label="Back")
         BackButton.Bind(wx.EVT_BUTTON, self.BackFromOption)
 
+        self.option3KeywordInput = wx.TextCtrl(self.panelOption3)
+        self.submitOption3Button = wx.Button(self.panelOption3, label ='submit')
+        self.submitOption3Button.Bind(wx.EVT_BUTTON, self.submitOption3Keyword)
+
         mainSizerOption3.Add(sizerTitle2, flag=wx.ALIGN_CENTRE)
+        mainSizerOption3.Add(self.option3KeywordInput, flag=wx.ALL, border = 20)
+        mainSizerOption3.Add(self.submitOption3Button, flag=wx.ALL, border=20)
 
         self.panelOption3.SetSizer(mainSizerOption3)
         self.panelOption3.Hide()
@@ -228,17 +234,22 @@ class MainWindow(wx.Frame):
 
 
 # ------------------------------- Button Event Functions------------------------------------------------
+
     def SubmitOption1Date(self,event):
         x = self.datePickTo.GetValue()
         y = self.datePickFrom.GetValue()
         # print(x)
         # print(y)
-        DateFromFormat = y.Format("%d/%m/%y")
-        DateToFormat = x.Format("%d/%m/%y")
+        DateFromFormat = y.Format("-%d/%m/%y")
+        DateToFormat = x.Format("-%d/%m/%y")
         # z = y.getAccidentsByAlcohol(y, x)
 
 
         self.GetData.getAccidentsByDate(DateFromFormat,DateToFormat)
+
+    def submitOption3Keyword(self, event):
+        keyword = self.option3KeywordInput.GetLineText
+        returnedata = GetData.getAccidentByKeyword(keyword)
 
     def getAccidentsByDate(self, dateFrom, dateTo):
         y = GetData()

@@ -240,12 +240,12 @@ class MainWindow(wx.Frame):
         y = self.datePickFrom.GetValue()
         # print(x)
         # print(y)
-        DateFromFormat = y.Format("-%d/%m/%y")
-        DateToFormat = x.Format("-%d/%m/%y")
+        DateFromFormat = y.Format("%d/%m/%y")
+        DateToFormat = x.Format("%d/%m/%y")
         # z = y.getAccidentsByAlcohol(y, x)
 
 
-        self.GetData.getAccidentsByDate(DateFromFormat,DateToFormat)
+        self.GetData.getAccidentsByDate(str(DateFromFormat),str(DateToFormat))
 
     def submitOption3Keyword(self, event):
         keyword = self.option3KeywordInput.GetLineText

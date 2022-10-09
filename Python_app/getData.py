@@ -1,6 +1,6 @@
 import sqlite3
 import pandas as pd
-from datetime import datetime
+from datetime import datetime as dt
 
 class GetData():
     def __init__(self):
@@ -12,13 +12,22 @@ class GetData():
         df.to_sql(table_name, self.connection, if_exists='append', index=False)
         dataframe = pd.DataFrame(df)
         dataframe.head()
-        # df['ACCIDENT_DATE'] = pd.to_datetime(df['ACCIDENT_DATE'])
-        # dataframe.info()
-        # print(dataframe)
+        df['ACCIDENT_DATE'] = pd.to_datetime(df['ACCIDENT_DATE'])
+        dataframe.info()
+        print(dataframe)
 
 
     def test(self):
-        self.cursor.execute("SELECT ACCIDENT_DATE FROM VicCrashStats WHERE ACCIDENT_DATE DATE_FORMAT(date,'%d-%m-%y') BETWEEN 01-07-2013 AND 02-07-2013")
+        self.cursor.execute("SELECT OBJECTID, ACCIDENT_DATE, ACCIDENT_TYPE FROM VicCrashStats WHERE (ACCIDENT_DATE BETWEEN '2013-07-07 00:00:500' AND '2013-07-08 00:00:00')")
+    #     SELECT
+    #     passenger_ID,
+    #     train_number,
+    #     STRFTIME('%d/%m/%Y, %H:%M', sale_datetime)
+    #     AS
+    #     sale_formatted_datetime
+    #
+    # FROM
+    # ticket;
         result = self.cursor.fetchall()
         print("Getting Data")
         # print(result)
@@ -45,9 +54,12 @@ class GetData():
         # dateStr = str(DateFrom)
         # date = datetime(dateStr)
         # date = datetime.strptime(DateFrom,"%d")
-        # print(DateFrom)
 
-        self.cursor.execute("SELECT * FROM VicCrashStats WHERE ACCIDENT_DATE BETWEEN" +" " + DateFrom + " " + "AND" + " " + DateTo)
+        DateFromDatetime = dt.strptime(DateFrom, "%d/%m/%y")
+        DateToDatetime = dt.strptime(DateTo, "%d/%m/%y")
+        query = "SELECT OBJECTID, ACCIDENT_DATE, ACCIDENT_TYPE FROM VicCrashStats WHERE (ACCIDENT_DATE BETWEEN '{}' AND '{}')".format(DateFromDatetime, DateToDatetime)
+        print(query)
+        self.cursor.execute(query)
         result = self.cursor.fetchall()
         print("Getting Data")
         print(len(result))

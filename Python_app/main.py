@@ -212,8 +212,8 @@ class MainWindow(wx.Frame):
         self.submitOption3Button.Bind(wx.EVT_BUTTON, self.submitOption3Keyword)
 
         mainSizerOption3.Add(sizerTitle2, flag=wx.ALIGN_CENTRE)
-        mainSizerOption3.Add(self.option3KeywordInput, flag=wx.ALL, border = 20)
-        mainSizerOption3.Add(self.submitOption3Button, flag=wx.ALL, border=20)
+        mainSizerOption3.Add(self.option3KeywordInput, flag=wx.ALIGN_CENTRE)
+        mainSizerOption3.Add(self.submitOption3Button, flag=wx.ALIGN_CENTRE)
 
         self.panelOption3.SetSizer(mainSizerOption3)
         self.panelOption3.Hide()
@@ -276,7 +276,12 @@ class MainWindow(wx.Frame):
 
     def submitOption3Keyword(self, event):
         keyword = self.option3KeywordInput.GetLineText
-        returnedata = GetData.getAccidentByKeyword(keyword)
+        option3AccidentsByKeyword = self.GetData.getAccidentByKeyword(keyword)
+
+        for item in option3AccidentsByKeyword:
+            index = self.option1ListControl.InsertItem(self.option1ListControl.GetItemCount(), item[0])
+            for col, text in enumerate(item[1:]):
+                self.option1ListControl.SetItem(index, col + 1, text)
 
     def getAccidentsByDate(self, dateFrom, dateTo):
         y = GetData()

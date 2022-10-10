@@ -45,9 +45,15 @@ class GetData():
     #            2342005
     # T Intersection Accidents 1494895
     def getAccidentByKeyword(self,Keyword):
-        SQL(Keyword)
+        query = "SELECT OBJECTID, ACCIDENT_DATE, ACCIDENT_TYPE FROM VicCrashStats WHERE (ACCIDENT_TYPE == {})".format(
+            Keyword)
+        print(query)
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        print("Getting Data")
+        return result
 
-        return
+            
 
 
     def getAccidentsByDate(self, DateFrom, DateTo):

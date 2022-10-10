@@ -1,0 +1,330 @@
+commit c5817ba3443547687beff669da1cbfd19990614f
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Mon Oct 10 14:05:41 2022 +1000
+
+    updated Option3 function and getaccidentbykeyword function
+
+commit 45b394bcfa62d3b950e5949869c0edb3677d53bd
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Sun Oct 9 20:28:02 2022 +1000
+
+    Created list control to show data from query option 1
+
+commit d517a36600acce0fbb00560308c23da17d0382b7
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Sun Oct 9 19:16:29 2022 +1000
+
+    Function for passing date and sql query working
+
+commit f7cda45a14a6fc93eb200cf7d99b26e5771e86d1
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Sun Oct 9 17:50:58 2022 +1000
+
+    Updated getData with formatted dates for csv file, added textctrl and submit for option3
+
+commit bddf7217f498fa9bb7402714f1e8dac31899b98a
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Sat Oct 8 19:19:07 2022 +1000
+
+    fix
+
+commit 48bbead588cd85752540a1758d66975649c53012
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Sat Oct 8 19:10:52 2022 +1000
+
+    Function for sending data to getData class finshed, date formatted, sql query to be finalised
+
+commit 23da9b4fb9152ef2d6489d0c236c70f65dc5a660
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Sat Oct 8 17:40:22 2022 +1000
+
+    Added function for parsing date range data
+
+commit 150777a941dd3046d43310ea3546abc97a7366b3
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Sat Oct 8 15:14:05 2022 +1000
+
+    Update main.py for spacing and font of gui, update of getData file from Davinder
+
+commit 010d69e84f250cce158bc876883f88dbd3eefb5b
+Author: dgrewal2022 <davinder.grewal@griffithuni.edu.au>
+Date:   Fri Oct 7 13:21:52 2022 +1000
+
+    File loading
+
+commit d7dad9ccad299a4eeacb48c0c1b2de9253fc5af2
+Merge: c23e2f4 7df70d7
+Author: dgrewal2022 <davinder.grewal@griffithuni.edu.au>
+Date:   Fri Oct 7 13:18:34 2022 +1000
+
+    Latest version of python_app folder
+
+commit c23e2f4895e866efb621e9b5d51069e1bc68c59b
+Author: dgrewal2022 <davinder.grewal@griffithuni.edu.au>
+Date:   Fri Oct 7 13:01:14 2022 +1000
+
+    File Loading
+
+commit 7df70d74591332ab22e72358093f899946b58a4a
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Fri Oct 7 08:19:39 2022 +1000
+
+    Connecting python to csv and outputting sqlite db then beginning functions for queries
+
+commit 28fd0831025370328a46778e77299372cc8cf02f
+Merge: 8849d8e 9024ec3
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Thu Oct 6 17:43:30 2022 +1000
+
+    Merge branch 'main' of https://github.com/TaylorEdgerton/2810ICT_Assignment
+    
+    Test text file was pushed to test repo connection
+
+commit 8849d8ee865477036e2c16f3b6d36218c994c3e4
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Thu Oct 6 17:33:52 2022 +1000
+
+    Python app files, start of navigation logic and layout
+
+commit 9024ec3ed09ca39e26948182644be122ceff149f
+Author: dgrewal2022 <davinder.grewal@griffithuni.edu.au>
+Date:   Thu Oct 6 11:39:29 2022 +1000
+
+    update the files
+
+commit e37ebe217d53bc1453450a1bd001367a1950de75
+Author: dgrewal2022 <davinder.grewal@griffithuni.edu.au>
+Date:   Thu Oct 6 10:49:23 2022 +1000
+
+    test commit
+
+commit b560e56cef3330bd31b87fa659d90066d1f09aff
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Thu Oct 6 10:20:44 2022 +1000
+
+    First commit of Python app files
+
+commit ec2eaf8c57983fcf09b0bdefb0ec889fc762c4a5
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Mon Sep 5 18:08:24 2022 +1000
+
+    finalising software design document and project plan
+
+commit aad43ae51764cf4fc2f8bf3713a4bb4d4658852f
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Sun Sep 4 15:11:55 2022 +1000
+
+    Added details to Software Design Document including Data structures, functions and design decisions
+
+commit 2ac567b77843a8c8ad32930b53542ea9fb1109d8
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Sat Sep 3 18:04:44 2022 +1000
+
+    User Requirements and Software Requirments added
+
+commit e2cd7f0b3aa207a39b075e1b71026b09edf547f5
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Thu Sep 1 16:00:33 2022 +1000
+
+    Project Plan updated with activity definitions
+
+commit 9033a6f96a96fba4dce5fd60671d479c80344a72
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Thu Sep 1 14:52:18 2022 +1000
+
+    Updated Project Plan with PDM
+
+commit 7c4028fbce0380ba5d0d3f9893ce17c1be2b3151
+Author: TaylorEdgerton <90355883+TaylorEdgerton@users.noreply.github.com>
+Date:   Tue Aug 23 16:25:09 2022 +1000
+
+    Create test.md
+
+commit 0de1bbeeb44f57b754f30c481f530cfa8a9ce180
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Mon Aug 22 14:11:22 2022 +1000
+
+    Update timeline of draft WBS
+
+commit 537a9f3cca5371680845b658e4130b2a118a8335
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Mon Aug 22 12:46:42 2022 +1000
+
+    Updated Project Plan Scope and Document Contents paragraphs
+
+commit ad4aea1bda1be2cfa6b86f4e90605c1b5137f721
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Mon Aug 22 12:28:30 2022 +1000
+
+    Completed Background intro paragraph | began project scope and added vision document heading ideas
+
+commit 95c7a2ce10641d75d7d9d5104c315342e66331be
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Tue Aug 16 14:02:10 2022 +1000
+
+    Began modifying timeline on WBS
+
+commit 9b3737c843ae6e507a4e5472139938e03d20532f
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Mon Aug 15 18:07:33 2022 +1000
+
+    Add Victoria Crash Statistics CSV dataset to be used for the assignment
+
+commit dcc3847030d5ffaf61c84a10d936d31c833aff9f
+Author: Taylor <taylor@edgerton.com.au>
+Date:   Mon Aug 15 17:56:41 2022 +1000
+
+    First Commit with WBS Draft added
+
+commit 11b54488271bc9c2b06ddc3f719ff149aba4fca7
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Wed Jul 27 10:54:07 2022 +1000
+
+    Update README.md
+
+commit 5daa93dad2d4830a363ad4f57877b44b0cb560e3
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Wed Jul 27 10:53:24 2022 +1000
+
+    Update README.md
+
+commit 86cf23b543f71b570c65b60d34c4a1146ba8724b
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Wed Jul 27 10:28:07 2022 +1000
+
+    Update README.md
+
+commit c9123b152a9aca51d2ae6ef2d3af8a00c0bc669d
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Wed Jul 27 10:26:41 2022 +1000
+
+    Update README.md
+
+commit f359774698d6d704611c8b901b64867231eed8d2
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Tue Jul 26 20:26:34 2022 +1000
+
+    Update README.md
+
+commit 6cdb3ecdc66eccee03a86aec140b4f4fb9923a6d
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Tue Jul 26 20:26:02 2022 +1000
+
+    Update README.md
+
+commit b6679a3c8c9abeae7750397e85f19752a3b26392
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Tue Jul 26 20:24:21 2022 +1000
+
+    Update README.md
+
+commit 4beddf0276319d947318898f5c53b9567ef58f73
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Tue Jul 26 19:01:26 2022 +1000
+
+    Update README.md
+
+commit 87074fa60b2472680158a4feee3ba544bd41130c
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Tue Jul 26 19:01:09 2022 +1000
+
+    Update README.md
+
+commit 2d17a94122620b046565ad82214d2f72519dbe6b
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Tue Jul 26 18:57:35 2022 +1000
+
+    Update README.md
+
+commit b40add1268efedbce10785445ff957f766ec8f80
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Tue Jul 26 18:41:19 2022 +1000
+
+    Update README.md
+
+commit e194912056b986d8d657bab9414df98ff53b652a
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Tue Jul 26 18:39:56 2022 +1000
+
+    Update README.md
+
+commit 7f416c98106eebbcafc9a01682563b98999c3085
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Tue Jul 26 18:38:55 2022 +1000
+
+    Update README.md
+
+commit b35cf72394a6a734ca8a5f38e04f7abc74c56518
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Tue Jul 26 18:38:07 2022 +1000
+
+    Update README.md
+
+commit 09aec85e7c936bf4d50ddeb1e4c53802844bfb60
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Tue Jul 26 18:36:56 2022 +1000
+
+    Update README.md
+
+commit b0df61c73bf4c99cb0ac16ac075794c1791437d3
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Tue Jul 26 18:36:40 2022 +1000
+
+    Update README.md
+
+commit 2224f19203500d7b2f6ea45467d1d2eed5e9d293
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Tue Jul 26 18:35:36 2022 +1000
+
+    Update README.md
+
+commit 413e197f63a6eb9aff7fdef6b4de939b46924150
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Tue Jul 26 18:35:13 2022 +1000
+
+    Update README.md
+
+commit 73c66bb897666d80277305a656ce3dd1b8c72aaf
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Tue Jul 26 18:34:50 2022 +1000
+
+    Update README.md
+
+commit 70f8ec1071ac68066ed1dd2f33dfcc8cc2d28e2f
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Tue Jul 26 18:34:30 2022 +1000
+
+    Updated readme with further instructions
+
+commit 84f0214fc77423ec0fef0f30ad6f232612bc24a3
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Tue Jul 26 18:33:28 2022 +1000
+
+    Added assignment document templates
+    
+    Part A
+    Project Plan
+    Gannt Chart
+    Software Design Document
+    
+    Part B
+    Executive Summary
+    Software Testing Report
+
+commit 4e3637ae57fa96f67a734cb565ee30f7f0570279
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Mon Jul 25 12:48:19 2022 +1000
+
+    Update README.md
+
+commit 020fb3b1fb35b640b8817112dd07ebfc910829ab
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Mon Jul 25 12:47:19 2022 +1000
+
+    Update README.md
+
+commit 71986bf5edc5aa8bdd1070fe070a9fa179607638
+Author: Gervase <g.tuxworth@griffith.edu.au>
+Date:   Mon Jul 25 12:37:54 2022 +1000
+
+    Initial commit

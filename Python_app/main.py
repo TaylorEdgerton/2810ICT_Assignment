@@ -1,12 +1,16 @@
 import wx
 import wx.adv
 from getData import *
+import matplotlib.pyplot as plt
 
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas
 Page="Home"
 class MainWindow(wx.Frame):
     page = ""
-    """ We simply derive a new class of Frame. """
+
     def __init__(self, parent, title):
+
         self.GetData = GetData()
         font = wx.SystemSettings.GetFont(wx.SYS_SYSTEM_FONT)
         font.SetPointSize(12)
@@ -148,46 +152,55 @@ class MainWindow(wx.Frame):
         # --------------------------------OPTION2 PAGE --------------------------------------------
 
 
-        self.panelOption2 = wx.Panel(self)
+        #---------------------------------- MATPLOTLIB ------------------------------------
 
+
+        self.panelOption2 = wx.Panel(self)
+        # Matplotlib data
+        alcoholData = self.GetData.accidentAlcoholStat()
+        print(alcoholData[0][0][0])
+
+        #Creating matplotlib element in wxpython
+
+        self.figure = Figure()
+        self.canvas = FigureCanvas(self, -1, self.figure)
+        self.axes = self.figure.add_subplot(1,1,1)
+        self.option2Matplotlib = wx.BoxSizer(wx.VERTICAL)
+        self.option2Matplotlib.Add(self.canvas, 1, wx.ALL, border=200)
+        self.Fit()
+
+        #Creating matplotplib barchart
+        data = {'Males':alcoholData[0][0][0], 'Females':alcoholData[1][0][0]}
+        gender = list(data.keys())
+        values = list(data.values())
+        self.axes.bar(gender,values, color ='blue', width = 0.4)
+        self.canvas.Show(False)
 
 
         mainSizerOption2 = wx.BoxSizer(wx.VERTICAL)
         datePickSizerOption2 = wx.BoxSizer(wx.HORIZONTAL)
         sizerTitle3 = wx.BoxSizer(wx.HORIZONTAL)
         sizerDescriptionOption2 = wx.BoxSizer(wx.HORIZONTAL)
-        descriptionTextOption2= "Select a date period to view details on all accidents that occured during that period"
+        descriptionTextOption2= "This data represents single vehicle, single occupant accidents that were alcohol related and sorts those accidents by Male and Female Genders"
         textTitle2 = wx.StaticText(self.panelOption2, label=Title)
         textTitle2.SetFont(font)
         textDescriptionOption2 = wx.StaticText(self.panelOption2, label= descriptionTextOption2)
         textDescriptionOption2.SetFont(font)
         sizerTitle2 = wx.BoxSizer(wx.HORIZONTAL)
         sizerTitle2.Add(textTitle2, flag = wx.ALL, border = 40)
-        sizerDescriptionOption2.Add(textDescriptionOption2, flag=wx.ALIGN_CENTRE)
+        sizerDescriptionOption2.Add(textDescriptionOption2, flag=wx.TOP, border= 500)
         BackButton = wx.Button(self.panelOption2, label="Back")
         BackButton.SetFont(font)
         BackButton.Bind(wx.EVT_BUTTON, self.BackFromOption)
 
-
-        datePickFromText = wx.StaticText(self.panelOption2, label="Date From")
-        datePickToText = wx.StaticText(self.panelOption2, label="Date To")
-        datePickFromText.SetFont(font)
-        datePickToText.SetFont(font)
-        datePickFrom = wx.adv.DatePickerCtrl(self.panelOption2)
-        datePickFrom.SetFont(font)
         # datePickFrom.Bind(wx.adv.EVT_DATE_CHANGED)
-        datePickTo = wx.adv.DatePickerCtrl(self.panelOption2)
-        datePickTo.SetFont(font)
-        datePickSizerOption2.Add(datePickFromText, flag= wx.ALL, border=20)
-        datePickSizerOption2.Add(datePickFrom, flag= wx.ALL, border=20)
-        datePickSizerOption2.Add(datePickToText, flag= wx.ALL, border=20)
-        datePickSizerOption2.Add(datePickTo, flag= wx.ALL, border=20)
+
+
 
         mainSizerOption2.Add(sizerTitle2, flag = wx.ALIGN_CENTRE)
 
         mainSizerOption2.Add(sizerDescriptionOption2,flag=wx.ALIGN_CENTRE)
-        # mainSizerOption1.Add(datePickFrom, proportion = 0, flag=wx.ALIGN_CENTRE)
-        mainSizerOption2.Add(datePickSizerOption2, proportion = 0, flag=wx.ALIGN_CENTRE)
+
         self.panelOption2.SetSizer(mainSizerOption2)
         self.panelOption2.Hide()
 
@@ -195,6 +208,11 @@ class MainWindow(wx.Frame):
 
 
         self.panelOption3 = wx.Panel(self)
+
+        self.option3ListControl = wx.ListCtrl(self.panelOption3, size=(400, 400), style=wx.LC_REPORT | wx.BORDER_SUNKEN)
+        self.option3ListControl.InsertColumn(1, "OBJECTID")
+        self.option3ListControl.InsertColumn(2, "ACCIDENT DATE")
+        self.option3ListControl.InsertColumn(3, "ACCIDENT TYPE")
 
         mainSizerOption3 = wx.BoxSizer(wx.VERTICAL)
         sizerTitle2 = wx.BoxSizer(wx.HORIZONTAL)
@@ -214,7 +232,7 @@ class MainWindow(wx.Frame):
         mainSizerOption3.Add(sizerTitle2, flag=wx.ALIGN_CENTRE)
         mainSizerOption3.Add(self.option3KeywordInput, flag=wx.ALIGN_CENTRE)
         mainSizerOption3.Add(self.submitOption3Button, flag=wx.ALIGN_CENTRE)
-
+        mainSizerOption3.Add(self.option3ListControl, proportion=0, flag=wx.ALIGN_CENTRE)
         self.panelOption3.SetSizer(mainSizerOption3)
         self.panelOption3.Hide()
 
@@ -245,6 +263,7 @@ class MainWindow(wx.Frame):
 
     def SubmitOption1Date(self,event):
         x = self.datePickTo.GetValue()
+        print(type(x))
         y = self.datePickFrom.GetValue()
         # print(x)
         # print(y)
@@ -275,16 +294,17 @@ class MainWindow(wx.Frame):
                 self.option1ListControl.SetItem(index, col + 1, text)
 
     def submitOption3Keyword(self, event):
-        keyword = self.option3KeywordInput.GetLineText
+        keyword = str(self.option3KeywordInput.GetLineText(0))
         option3AccidentsByKeyword = self.GetData.getAccidentByKeyword(keyword)
-
+        print(keyword)
         for item in option3AccidentsByKeyword:
-            index = self.option1ListControl.InsertItem(self.option1ListControl.GetItemCount(), item[0])
+            index = self.option3ListControl.InsertItem(self.option3ListControl.GetItemCount(), item[0])
             for col, text in enumerate(item[1:]):
-                self.option1ListControl.SetItem(index, col + 1, text)
+                self.option3ListControl.SetItem(index, col + 1, text)
 
     def getAccidentsByDate(self, dateFrom, dateTo):
         y = GetData()
+
 
 
     def HomeToMenu(self, event):
@@ -308,6 +328,7 @@ class MainWindow(wx.Frame):
      self.panelOption4.Hide()
      self.panelMenu.Show()
      self.panelHome.SetSize(1080,800)
+     self.canvas.Show(False)
 
 
     def Option1(self, event):
@@ -322,6 +343,7 @@ class MainWindow(wx.Frame):
     def Option2(self, event):
         # self.frame.Show()
         self.panelOption2.Show()
+        self.canvas.Show(True)
         self.panelMenu.Hide()
         self.panelOption2.SetSize(1080,800)
 

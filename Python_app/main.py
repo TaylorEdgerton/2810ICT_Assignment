@@ -91,6 +91,8 @@ class MainWindow(wx.Frame):
         self.option1ListControl.InsertColumn(1, "OBJECTID")
         self.option1ListControl.InsertColumn(2, "ACCIDENT DATE")
         self.option1ListControl.InsertColumn(3, "ACCIDENT TYPE")
+        self.option1ListControl.InsertColumn(4, "ROAD GEOMETRY")
+        self.option1ListControl.InsertColumn(5, "INJURIES OR FATALITIES")
 
 
 
@@ -158,7 +160,7 @@ class MainWindow(wx.Frame):
         self.panelOption2 = wx.Panel(self)
         # Matplotlib data
         alcoholData = self.GetData.accidentAlcoholStat()
-        print(alcoholData[0][0][0])
+        # print(type(alcoholData))
 
         #Creating matplotlib element in wxpython
 
@@ -270,7 +272,7 @@ class MainWindow(wx.Frame):
         DateFromFormat = y.Format("%d/%m/%y")
         DateToFormat = x.Format("%d/%m/%y")
         # z = y.getAccidentsByAlcohol(y, x)
-
+        print(DateFromFormat)
 
         option1AllAccidents = self.GetData.getAccidentsByDate(str(DateFromFormat),str(DateToFormat))
         # for i in option1AllAccidents:
